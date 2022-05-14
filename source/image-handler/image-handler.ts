@@ -30,7 +30,7 @@ export class ImageHandler {
       } else {
         const metadata = await sharp(originalImage, { failOnError: false }).metadata();
         image = metadata.orientation
-          ? sharp(originalImage, { failOnError: false }).withMetadata({ orientation: metadata.orientation })
+          ? sharp(originalImage, { failOnError: false }).rotate().withMetadata({ orientation: 1 })
           : sharp(originalImage, { failOnError: false }).withMetadata();
       }
 
