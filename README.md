@@ -59,11 +59,11 @@ export MAIN_DIRECTORY=$PWD
 ### 2. Declare environment variables
 
 ```bash
-export REGION=aws-region-code # the AWS region to launch the solution (e.g. us-east-1)
-export BUCKET_PREFIX=my-bucket-name # the bucket prefix, randomized name recommended
+export REGION=us-east-1 # the AWS region to launch the solution (e.g. us-east-1)
+export BUCKET_PREFIX=serverless-image-handler-snacktime-{dev|stage|prod}-custom # the bucket prefix, randomized name recommended
 export BUCKET_NAME=$BUCKET_PREFIX-$REGION # the bucket name where customized code will reside
-export SOLUTION_NAME=my-solution-name # the solution name
-export VERSION=my-version # version number for the customized code
+export SOLUTION_NAME=serverless-image-handler # the solution name
+export VERSION=6.0 # version number for the customized code
 ```
 
 ## Unit Test
