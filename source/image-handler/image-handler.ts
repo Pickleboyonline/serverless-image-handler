@@ -242,6 +242,12 @@ export class ImageHandler {
         }
         default: {
           if (edit in originalImage) {
+            if (edit === 'rotate') {
+              // We must convert "clone" sharp image to reapply rotate,
+              // since it was done in the beginning.
+              const buffer = await originalImage.toBuffer();
+              originalImage = sharp(buffer, { failOnError: false });
+            }
             originalImage[edit](edits[edit]);
           }
         }
