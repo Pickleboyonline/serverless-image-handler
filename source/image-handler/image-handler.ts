@@ -48,13 +48,17 @@ export class ImageHandler {
     } else {
       // change output format if specified
       if (imageRequestInfo.outputFormat !== undefined) {
-        const modifiedImage = sharp(originalImage, { failOnError: false });
+        // Ensure metadata is still present
+        const modifiedImage = sharp(originalImage, { failOnError: false }).withMetadata();
         modifiedImage.toFormat(ImageHandler.convertImageFormatType(imageRequestInfo.outputFormat));
 
         const imageBuffer = await modifiedImage.toBuffer();
         base64EncodedImage = imageBuffer.toString('base64');
       } else {
-        base64EncodedImage = originalImage.toString('base64');
+        // Ensure metadata is still present
+        const modifiedImage = sharp(originalImage, { failOnError: false }).withMetadata();
+        const imageBuffer = await modifiedImage.toBuffer();
+        base64EncodedImage = imageBuffer.toString('base64');
       }
     }
 
