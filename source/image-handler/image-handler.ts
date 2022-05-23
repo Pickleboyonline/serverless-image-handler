@@ -47,6 +47,7 @@ export class ImageHandler {
       base64EncodedImage = imageBuffer.toString('base64');
     } else {
       // change output format if specified
+      // WebP can cause chrome to have the incorrect orientation, pre rotate image.
       if (imageRequestInfo.outputFormat !== undefined) {
         // Ensure metadata is still present
         const modifiedImage = sharp(originalImage, { failOnError: false }).rotate().withMetadata();

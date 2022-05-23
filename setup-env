@@ -1,0 +1,15 @@
+#! /bin/bash
+
+# Check to see if input has been provided:
+if [ -z "$1" ]; then
+    echo "ERROR: Please provide Snacktime env (dev, prod, stage)"
+    echo "For example: ./setup-env dev"
+    exit 1
+fi
+
+export MAIN_DIRECTORY=$PWD
+export REGION=us-east-1
+export BUCKET_PREFIX=serverless-image-handler-snacktime-$1-custom
+export BUCKET_NAME=$BUCKET_PREFIX-$REGION
+export SOLUTION_NAME=serverless-image-handler
+export VERSION=$2

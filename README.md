@@ -58,6 +58,14 @@ export MAIN_DIRECTORY=$PWD
 
 ### 2. Declare environment variables
 
+**Method 1**
+
+```bash
+source ./setup-env {dev|stage|prod} {VERSION}
+```
+
+**Method 2**
+
 ```bash
 export REGION=us-east-1 # the AWS region to launch the solution (e.g. us-east-1)
 export BUCKET_PREFIX=serverless-image-handler-snacktime-{dev|stage|prod}-custom # the bucket prefix, randomized name recommended
